@@ -160,11 +160,11 @@ print(f"ONNX 模型已保存至 {output_path}")
 
 執行此程式碼後，會在當前目錄下生成一個名為 tf_model.onnx 的文件。這個文件就是已經轉換好的鳶尾花分類模型的 ONNX 格式，可以用於後續的 ONNX-MLIR 編譯或其他 ONNX 支援的推論工具上。
 
-## 2. 使用 ONNX-MLIR 轉換模型為共享庫
-以下是如何使用 ONNX-MLIR 將 tf.onnx 模型轉換為共享庫（.so 文件）的步驟。
+## 2. 使用 ONNX-MLIR 編譯模型為共享庫
+以下是如何使用 ONNX-MLIR 將 tf.onnx 模型編譯為共享庫（.so 文件）的步驟。
 
-### 2.1 將 ONNX 模型轉換為共享庫
-使用 onnx-mlir 將 tf_model.onnx 模型轉換為共享庫（.so 文件）。執行以下命令：
+### 2.1 將 ONNX 模型編譯為共享庫
+使用 onnx-mlir 將 tf_model.onnx 模型編譯為共享庫（.so 文件）。執行以下命令：
 
 ```sh
 onnx-mlir --EmitLib tf_model.onnx
@@ -314,10 +314,7 @@ g++ --std=c++17 static-inference.cpp -o main -I../onnx-mlir/include -L../onnx-ml
    最終，`ONNX-MLIR` 將優化後的 LLVM IR 編譯為目標平台的機器碼，生成可執行的共享庫文件（在 Linux 和 macOS 上為 `.so` 文件，在 Windows 上為 `.dll` 文件）。
 
 
-
-
 ## Reference
 - [ONNX模型檔->可執行檔C Runtime通路詳細實作方法](https://zhuanlan.zhihu.com/p/356735007)
-- [怎样去学习mlir这套框架？](https://www.zhihu.com/question/435109274) 
-2023年后，AI 还有什么研究方向有前景？ https://www.zhihu.com/question/591140366
+- [怎样去学习mlir这套框架？](https://www.zhihu.com/question/435109274)
 - [ONNX 介紹](https://blog.trendmicro.com.tw/?p=82293)

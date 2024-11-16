@@ -63,7 +63,7 @@ hb_model = convert(onnx_model, 'onnx')
 hb_model.save('iris_logistic_regression_torch.onnx')
 ```
 
-### 使用 ONNX-MLIR 將模型編譯轉換為動態連結庫
+### 使用 ONNX-MLIR 將模型編譯編譯為動態連結庫
 使用 onnx-mlir 指令解析 onnx 文件，並輸出動態連結庫。
 
 ```
