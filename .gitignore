@@ -2,3 +2,4 @@
 .pkl_memoize_py3
 main
 .DS_Store
+__pycache__

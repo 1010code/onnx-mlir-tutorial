@@ -1,5 +1,4 @@
 
-
 # 使用 ONNX-MLIR 優化 ONNX 模型並在 C++ 中進行推論
 隨著人工智慧和機器學習應用的快速發展，越來越多的框架和工具支持將訓練好的模型進行優化並部署在不同的硬體環境中。ONNX-MLIR 是其中一個專門用於 ONNX 模型的優化和編譯工具，它可以將 ONNX 格式的機器學習模型轉換為高度優化的可執行文件（如 .so 或 .dll 動態庫）。這樣的轉換使得模型可以在目標硬體上以較高的效率運行，並且利用 LLVM 和 MLIR 的優化功能，進一步減少了運行時的延遲和計算資源的消耗。
 
@@ -93,7 +92,7 @@ export LIT_OPTS=-v
 cmake --build . --target check-onnx-lit
 ```
 
-在安裝 ONNX-MLIR 的過程中，確保使用包含 Python 的環境非常重要。建議使用 conda 來建立和管理開發環境。
+在安裝 ONNX-MLIR 的過程中，確保使用包含 Python 的環境非常重要。建議使用 conda 來建立和管理開發環境。編譯完成後將會在 `onnx-mlir/build/Relrase/` 下看到 bin 檔可以在該目錄下使用 onnx-mlir CLI 介面將 ONNX 格式的機器學習模型轉換為高度優化的可執行文件。以及 lib 資料夾下會有一個 libcruntime.a 靜態庫，供最終編譯推論時使用(這個靜態庫在後面2.1部分會透過CLI指令與so包再一起)。
 
 ## 1. 建立並保存 ONNX 模型檔案
 以下是一個使用 TensorFlow 建立鳶尾花（Iris）分類模型並將其導出為 ONNX 格式的範例。該模型使用簡單的全連接層來進行分類，並轉換為 ONNX 格式，方便在 ONNX-MLIR 或其他 ONNX 支持的推論引擎上運行。
@@ -295,8 +294,10 @@ g++ --std=c++17 static-inference.cpp -o main -I../onnx-mlir/include -L../onnx-ml
 #### **2. 與 `libcruntime` 配合使用進行推論**
 - `ONNX-MLIR` 提供了運行時庫 **`libcruntime`**，該庫支持 `.so` 文件的運行。`libcruntime` 提供了核心的數據結構（例如 `OMTensor`）來管理輸入和輸出張量，以及函數（例如 `run_main_graph`）來調用 `.so` 文件中的推論邏輯。
 
-#### **3. C++/Python 接口支持**
-- 用戶可以撰寫 C++ 或 Python 程式碼來調用 `.so` 文件。通過 **`OnnxMlirRuntime.h`** 提供的 API，用戶可以方便地將 `.so` 文件加載到應用中，並與推論函數交互。
+#### **3. C++/Python 介面支持**
+- 使用者可以撰寫 C++ 或 Python 程式碼來調用 `.so` 文件。通過 **`OnnxMlirRuntime.h`** 提供的 API，用戶可以方便地將 `.so` 文件加載到應用中，並與推論函數交互。
+  - [參考官方文件C Runtime API](https://onnx.ai/onnx-mlir/doxygen_html/OnnxMlirRuntime/index.html)
+  - [參考官方文件 Using Python interfaces](https://onnx.ai/onnx-mlir/UsingPyRuntime.html)
 
 ---
 
