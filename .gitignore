@@ -1,2 +1,4 @@
-.ipynb_checkpoints/
-*.so
+.ipynb_checkpoints
+.pkl_memoize_py3
+main
+.DS_Store

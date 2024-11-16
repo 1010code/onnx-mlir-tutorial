@@ -1,7 +1,7 @@
 #include "OnnxMlirRuntime.h"  // 引入 OnnxMlirRuntime 頭文件
 #include <iostream>
 
-// 聲明模型函數，函數名稱可能根據模型不同而異，常見的名稱是 'run_main_graph'
+// 聲明模型函數 'run_main_graph'
 extern "C" OMTensorList* run_main_graph(OMTensorList*);
 
 int main() {

@@ -1,0 +1,3 @@
+hummingbird=0.4.12
+torch=2.2.2
+onnx=1.16.1
