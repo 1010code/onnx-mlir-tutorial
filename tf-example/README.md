@@ -315,7 +315,8 @@ g++ --std=c++17 static-inference.cpp -o main -I../onnx-mlir/include -L../onnx-ml
    最終，`ONNX-MLIR` 將優化後的 LLVM IR 編譯為目標平台的機器碼，生成可執行的共享庫文件（在 Linux 和 macOS 上為 `.so` 文件，在 Windows 上為 `.dll` 文件）。
 
 
+在下一篇文章中，我們將探討如何將 scikit-learn 模型儲存為 ONNX 格式，並使用 ONNX-MLIR 進行優化。
+
 ## Reference
 - [ONNX模型檔->可執行檔C Runtime通路詳細實作方法](https://zhuanlan.zhihu.com/p/356735007)
 - [怎样去学习mlir这套框架？](https://www.zhihu.com/question/435109274)
-- [ONNX 介紹](https://blog.trendmicro.com.tw/?p=82293)
